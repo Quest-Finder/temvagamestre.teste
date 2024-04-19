@@ -10,7 +10,7 @@ Este projeto será uma framework de automação de teste para o projeto 'Tem Vag
 
 ### Tarefas
 - [x] Instalação e configuração
-- [] Abrir browser e acessar a tela de perfil
+- [ ] Abrir browser e acessar a tela de perfil
 
 
 ### Colaboradores:
