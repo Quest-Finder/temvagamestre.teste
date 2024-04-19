@@ -1,0 +1,26 @@
+{
+  "name": "temvagamestre.teste",
+  "version": "1.0.0",
+  "description": "Este projeto será uma framework de automação de teste para o projeto 'Tem Vaga, Mestre?' com o objetivo de validar testes de front-end e back-end",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quest-Finder/temvagamestre.teste.git"
+  },
+  "keywords": [],
+  "author": [
+    {"name": "Bruno Machado"},
+    {"name": "Jéssica Ferraz"},
+    {"name": "Renata Valois"}
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Quest-Finder/temvagamestre.teste/issues"
+  },
+  "homepage": "https://github.com/Quest-Finder/temvagamestre.teste#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.43.1",
+    "@types/node": "^20.12.7"
+  }
+}
