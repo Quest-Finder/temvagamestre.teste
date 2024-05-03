@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
 test('acessar perfil', async ({ page }) => {
-  await page.goto('https://frontend-nnf7bytugq-uc.a.run.app/user/profile?show=profile');
+  await page.goto('/user/profile?show=profile');
   
   await expect(page).toHaveTitle(/Tem Vaga Mestre/);
 
@@ -11,3 +11,5 @@ test('acessar perfil', async ({ page }) => {
   await page.getByRole('button', { name: 'Ver mais'}).click();
 });
 
+// Como utilizar baseUrl - criar uma branch 
+// criar a tarefa, criar a branch e checkout
