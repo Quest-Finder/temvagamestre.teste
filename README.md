@@ -22,3 +22,12 @@ Este projeto será uma framework de automação de teste para o projeto 'Tem Vag
 [Documentação Playwrigth](https://playwright.dev/)
 
 [Ambiente de testes](https://frontend-nnf7bytugq-uc.a.run.app/)
+
+### Como executar os testes
+Execute esse comando para rodar os testes
+
+```npx playwright test```
+
+Execute esse comando para rodar os testes de forma visual
+
+```npx playwright test --ui```
