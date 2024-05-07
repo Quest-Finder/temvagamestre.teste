@@ -11,5 +11,3 @@ test('acessar perfil', async ({ page }) => {
   await page.getByRole('button', { name: 'Ver mais'}).click();
 });
 
-// Como utilizar baseUrl - criar uma branch 
-// criar a tarefa, criar a branch e checkout
