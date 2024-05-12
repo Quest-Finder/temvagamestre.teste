@@ -1,13 +1,9 @@
 const { test, expect } = require('@playwright/test');
+import { PerfilPage } from '../pages/perfil-page';
 
-test('acessar perfil', async ({ page }) => {
-  await page.goto('https://frontend-nnf7bytugq-uc.a.run.app/user/profile?show=profile');
-  
-  await expect(page).toHaveTitle(/Tem Vaga Mestre/);
-
-  await expect(page.getByRole('heading', { name: 'Estilos preferidos' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Conquistas' })).toBeVisible();
-
-  await page.getByRole('button', { name: 'Ver mais'}).click();
+test('Acessar perfil', async ({ page }) => {
+  const perfilPage = new PerfilPage(page);
+  await perfilPage.goto();
+  await perfilPage.conferirElementosTela();  
 });
 

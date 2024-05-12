@@ -1,0 +1,27 @@
+const { expect } = require('@playwright/test');
+
+exports.PerfilPage = class PerfilPage {
+
+    constructor(page) {
+        this.page = page;
+        this.extenderBio = "//button[contains(.,'Ver mais')]";
+        this.reduzirBio = "//button[contains(.,'Ver menos')]";
+        this.estilosPreferidos = "(//h1[contains(.,'Estilos preferidos')])[1]";
+        this.conquistas = "(//h1[contains(.,'Conquistas')])[1]";
+    }
+
+    async goto(){
+        await this.page.goto('https://frontend-nnf7bytugq-uc.a.run.app/user/profile?show=profile');
+    }
+
+    async conferirElementosTela(){
+        await expect(this.page).toHaveTitle(/Tem Vaga Mestre/);
+
+        await this.page.click(this.extenderBio);
+        await this.page.click(this.reduzirBio);
+
+        await expect(this.page.locator(this.estilosPreferidos)).toBeVisible();
+        await expect(this.page.locator(this.conquistas)).toBeVisible();
+    }
+};
+
