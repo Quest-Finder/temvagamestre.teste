@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test } = require('@playwright/test');
 import { PerfilPage } from '../pages/perfil.js';
 
 test('Acessar perfil', async ({ page }) => {

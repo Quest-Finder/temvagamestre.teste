@@ -1,4 +1,5 @@
 const { expect } = require('@playwright/test');
+const { PATH } = require('../utils/constants');
 
 exports.PerfilPage = class PerfilPage {
   constructor(page) {
@@ -6,9 +7,7 @@ exports.PerfilPage = class PerfilPage {
   }
 
   async goto() {
-    await this.page.goto(
-      'https://frontend-nnf7bytugq-uc.a.run.app/user/profile?show=profile'
-    );
+    await this.page.goto(PATH.perfil);
   }
 
   async clicarExtenderBio() {
