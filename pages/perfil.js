@@ -44,14 +44,6 @@ exports.PerfilPage = class PerfilPage {
     ).toBeVisible();
   }
 
-  // async validarInsignias(reiDasRolagens, mestreRaiz) {
-  //   await expect(this.page.getByText(reiDasRolagens, mestreRaiz)).toBeVisible();
-  //   await expect(this.page.getByText(reiDasRolagens, mestreRaiz)).toHaveText(
-  //     reiDasRolagens,
-  //     mestreRaiz
-  //   );
-  // }
-
   async validarInsigniasRecebidas(conquistas) {
     conquistas.forEach(async (insignia) => {
       const localizador = "//p[contains(.,'" + insignia + "')]";
