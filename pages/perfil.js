@@ -29,15 +29,26 @@ exports.PerfilPage = class PerfilPage {
     await expect(this.page.getByText(bio)).toHaveText(bio);
   }
 
-  async validarTitulo() {
+  async validateTitle() {
     await expect(this.page).toHaveTitle(/Tem Vaga Mestre/);
   }
 
-  async validarEstilosPreferidos() {
-    const estilosPreferidos = "(//h1[contains(.,'Estilos preferidos')])[1]";
-    await expect(this.page.locator(estilosPreferidos)).toBeVisible();
+  async validateTitleEstilosPreferidos() {
+    const tituloEstilosPreferidos =
+      "(//h1[contains(.,'Estilos preferidos')])[1]";
+    await expect(this.page.locator(tituloEstilosPreferidos)).toBeVisible();
   }
-  async validarTituloConquistas() {
+
+  async validarEstilosDeJogoEscolhidos(estilos) {
+    estilos.forEach(async (estilo) => {
+      const localizador = "//span[@title='" + estilo + "']";
+      await expect(this.page.locator(localizador)).toBeVisible();
+
+      await expect(this.page.locator(localizador)).toHaveText(estilo);
+    });
+  }
+
+  async validateTitleConquistas() {
     const conquistas = { role: 'heading', name: 'Conquistas' };
     await expect(
       this.page.getByRole(conquistas.role, { name: conquistas.name })
@@ -54,25 +65,43 @@ exports.PerfilPage = class PerfilPage {
   }
 
   async validarNome(nome) {
-    const nomeUsuario = "//h2[contains(.,'Lucas Marcelo')]";
-    await expect(this.page.locator(nomeUsuario)).toBeVisible();
-    await expect(this.page.locator(nomeUsuario)).toHaveText(nome);
+    const nomeUsuario = { role: 'heading', name: nome };
+    await expect(
+      this.page.getByRole(nomeUsuario.role, { name: nomeUsuario.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(nomeUsuario.role, { name: nomeUsuario.name })
+    ).toHaveText(nome);
   }
 
-  async validarPronome() {
-    const pronomeUsuario = "//h2[contains(.,'(Ele - Dele)')]";
-    await expect(this.page.locator(pronomeUsuario)).toBeVisible();
+  async validarPronome(pronome) {
+    const pronomeUsuario = { role: 'heading', name: `(${pronome})` };
+    await expect(
+      this.page.getByRole(pronomeUsuario.role, { name: pronomeUsuario.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(pronomeUsuario.role, { name: pronomeUsuario.name })
+    ).toHaveText(pronomeUsuario.name);
   }
 
-  async validarUsername() {
-    const username = "//h2[contains(.,'@mestremarcelo')]";
-    await expect(this.page.locator(username)).toBeVisible();
+  async validarUsername(username) {
+    const usernamePerfil = { role: 'heading', name: username };
+    await expect(
+      this.page.getByRole(usernamePerfil.role, { name: usernamePerfil.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(usernamePerfil.role, { name: usernamePerfil.name })
+    ).toHaveText(username);
   }
 
-  async validarUserTitle() {
-    const userTitle =
-      "//h2[contains(.,'Mestre D&D com 15 anos de experiência')]";
-    await expect(this.page.locator(userTitle)).toBeVisible();
+  async validarUserTitle(title) {
+    const userTitle = { role: 'heading', name: title };
+    await expect(
+      this.page.getByRole(userTitle.role, { name: userTitle.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(userTitle.role, { name: userTitle.name })
+    ).toHaveText(title);
   }
 
   async validarLocalResidencia(cidade, pais) {
