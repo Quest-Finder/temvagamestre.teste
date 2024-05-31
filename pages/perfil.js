@@ -1,10 +1,10 @@
 const { expect } = require('@playwright/test');
-const { PATH } = require('../utils/constants');
+const { PATH, ESTILOS_PREFERIDOS } = require('../utils/constants');
+const { TIMEOUT } = require('dns');
+const { error } = require('console');
+const exp = require('constants');
 
 exports.PerfilPage = class PerfilPage {
-
-  VER_MAIS_BTN = "//button[contains(.,'Ver mais')]"
-
 
   constructor(page) {
     this.page = page;
@@ -19,19 +19,17 @@ exports.PerfilPage = class PerfilPage {
   }
 
   async validarTituloBio() {
-    const bioTitlle = "//h2[contains(.,'Bio')]";
-    await expect(this.page.locator(bioTitlle)).toBeVisible();
+    const bioTitle = "//h2[contains(.,'Bio')]";
+    await expect(this.page.locator(bioTitle)).toBeVisible();
   }
 
   async validarBotaoExtenderBio() {
-    await expect(this.page.locator(this.VER_MAIS_BTN)).toBeVisible();
+    const botaoExtenderBio = "//button[contains(.,'Ver mais')]";
+    await expect(this.page.locator(botaoExtenderBio)).toBeVisible();
+    await this.page.click(botaoExtenderBio);
   }
 
-  async clicarBotaoExtenderBio() {
-    await this.page.click(this.VER_MAIS_BTN);
-  }
-
-  async validarEClicarBotaoReduzirBio() {
+  async validarBotaoReduzirBio() {
     const botaoReduzirBio = "//button[contains(.,'Ver menos')]";
     await expect(this.page.locator(botaoReduzirBio)).toBeVisible();
     await this.page.click(botaoReduzirBio);
@@ -42,16 +40,15 @@ exports.PerfilPage = class PerfilPage {
     await expect(this.page.locator(tituloEstilosPreferidos)).toBeVisible();
   }
 
-  async validarEstilosDeJogoEscolhidos() {
-    const FantasiaHeroica = "//span[@title='Fantasia heroica']";
-    const NinjaVsSamurai = "//span[@title='Ninja vs Samurai']";
-    const EspadaEFeiticaria = "//span[@title='Espada e feitiçaria']";
+  async validarEstilosDeJogoEscolhidos(estilos) {
+    estilos.forEach(async(estilo) => {
+      const localizador = "//span[@title='"+estilo+"']";
+      await expect(this.page.locator(localizador)).toBeVisible();
 
-    await expect(this.page.locator(FantasiaHeroica)).toBeVisible();
-    await expect(this.page.locator(NinjaVsSamurai)).toBeVisible();
-    await expect(this.page.locator(EspadaEFeiticaria)).toBeVisible();
+      await expect(this.page.locator(localizador)).toHaveText(estilo);
+    })
   };
-   
+       
   async validarTituloConquistas() {
     const conquistas = "(//h1[contains(.,'Conquistas')])[1]";
     await expect(this.page.locator(conquistas)).toBeVisible();
@@ -59,9 +56,9 @@ exports.PerfilPage = class PerfilPage {
 
   async validarConquistasAdquiridas() {
     const ReiDasRolagens = "//p[contains(.,'Rei das rolagens')]";
-    const NinjaVsSamurai = "//p[contains(.,'Mestre raiz')]";
+    const MestreRaiz = "//p[contains(.,'Mestre raiz')]";
 
     await expect(this.page.locator(ReiDasRolagens)).toBeVisible();
-    await expect(this.page.locator(NinjaVsSamurai)).toBeVisible();
+    await expect(this.page.locator(MestreRaiz)).toBeVisible();
   };
 }
