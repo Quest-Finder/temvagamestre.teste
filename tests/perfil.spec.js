@@ -5,7 +5,7 @@ import { PERFIL } from '../utils/constants.js';
 test('Acessar perfil', async ({ page }) => {
   const perfilPage = new PerfilPage(page);
   await perfilPage.goto();
-  await perfilPage.validarTitulo();
+  await perfilPage.validateTitle();
 });
 
 test('Validar dados do usuário', async ({ page }) => {
@@ -14,7 +14,7 @@ test('Validar dados do usuário', async ({ page }) => {
   await perfilPage.validarNome(PERFIL.jogador.nome);
   await perfilPage.validarPronome(PERFIL.jogador.pronome);
   await perfilPage.validarUsername(PERFIL.jogador.username);
-  await perfilPage.validarUserTitle(PERFIL.jogador.titulo);
+  await perfilPage.validarUserTitle(PERFIL.jogador.title);
   await perfilPage.validarLocalResidencia(
     PERFIL.jogador.cidade,
     PERFIL.jogador.pais
@@ -26,7 +26,7 @@ test('Validar Estilos de jogo e Conquistas', async ({ page }) => {
   const perfilPage = new PerfilPage(page);
   await perfilPage.goto();
   await perfilPage.validarEstilosPreferidos(PERFIL.jogador.estilosPreferidos);
-  await perfilPage.validarTituloConquistas();
+  await perfilPage.validateTitleConquistas();
   await perfilPage.validarInsigniasRecebidas(PERFIL.jogador.conquistas);
 });
 

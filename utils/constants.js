@@ -25,7 +25,7 @@ export const PERFIL = {
     nome: 'Lucas Marcelo',
     pronome: 'Ele-Dele',
     username: '@mestremarcelo',
-    titulo: 'Mestre D&D com 15 anos de experiência',
+    title: 'Mestre D&D com 15 anos de experiência',
     cidade: 'São Paulo',
     pais: 'Brasil',
     idade: 35,

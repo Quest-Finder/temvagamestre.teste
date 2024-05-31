@@ -29,11 +29,11 @@ exports.PerfilPage = class PerfilPage {
     await expect(this.page.getByText(bio)).toHaveText(bio);
   }
 
-  async validarTitulo() {
+  async validateTitle() {
     await expect(this.page).toHaveTitle(/Tem Vaga Mestre/);
   }
 
-  async validarTituloEstilosPreferidos() {
+  async validateTitleEstilosPreferidos() {
     const tituloEstilosPreferidos =
       "(//h1[contains(.,'Estilos preferidos')])[1]";
     await expect(this.page.locator(tituloEstilosPreferidos)).toBeVisible();
@@ -48,7 +48,7 @@ exports.PerfilPage = class PerfilPage {
     });
   }
 
-  async validarTituloConquistas() {
+  async validateTitleConquistas() {
     const conquistas = { role: 'heading', name: 'Conquistas' };
     await expect(
       this.page.getByRole(conquistas.role, { name: conquistas.name })
@@ -94,14 +94,14 @@ exports.PerfilPage = class PerfilPage {
     ).toHaveText(username);
   }
 
-  async validarUserTitle(titulo) {
-    const userTitle = { role: 'heading', name: titulo };
+  async validarUserTitle(title) {
+    const userTitle = { role: 'heading', name: title };
     await expect(
       this.page.getByRole(userTitle.role, { name: userTitle.name })
     ).toBeVisible();
     await expect(
       this.page.getByRole(userTitle.role, { name: userTitle.name })
-    ).toHaveText(titulo);
+    ).toHaveText(title);
   }
 
   async validarLocalResidencia(cidade, pais) {
