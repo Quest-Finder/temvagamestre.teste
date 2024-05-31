@@ -1,6 +1,6 @@
 const { test } = require('@playwright/test');
 import { PerfilPage } from '../pages/perfil.js';
-import { CONQUISTAS, PERFIL } from '../utils/constants.js';
+import { PERFIL } from '../utils/constants.js';
 
 test('Acessar perfil', async ({ page }) => {
   const perfilPage = new PerfilPage(page);

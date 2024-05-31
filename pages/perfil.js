@@ -1,8 +1,5 @@
 const { expect } = require('@playwright/test');
-const { PATH, ESTILOS_PREFERIDOS } = require('../utils/constants');
-const { TIMEOUT } = require('dns');
-const { error } = require('console');
-const exp = require('constants');
+const { PATH } = require('../utils/constants');
 
 exports.PerfilPage = class PerfilPage {
   constructor(page) {
