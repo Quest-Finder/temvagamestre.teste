@@ -5,7 +5,6 @@ const { error } = require('console');
 const exp = require('constants');
 
 exports.PerfilPage = class PerfilPage {
-
   constructor(page) {
     this.page = page;
   }
@@ -14,51 +13,119 @@ exports.PerfilPage = class PerfilPage {
     await this.page.goto(PATH.perfil);
   }
 
-  async validarTituloDaPagina() {
+  async clicarExtenderBio() {
+    const extenderBioButton = { role: 'button', name: 'Ver mais' };
+    await this.page
+      .getByRole(extenderBioButton.role, { name: extenderBioButton.name })
+      .click();
+  }
+
+  async clicarReduzirBio() {
+    const extenderBioButton = { role: 'button', name: 'Ver menos' };
+    await this.page
+      .getByRole(extenderBioButton.role, { name: extenderBioButton.name })
+      .click();
+  }
+
+  async validarTextoBio(bio) {
+    await expect(this.page.getByText(bio)).toBeVisible();
+    await expect(this.page.getByText(bio)).toHaveText(bio);
+  }
+
+  async validarTitulo() {
     await expect(this.page).toHaveTitle(/Tem Vaga Mestre/);
   }
 
-  async validarTituloBio() {
-    const bioTitle = "//h2[contains(.,'Bio')]";
-    await expect(this.page.locator(bioTitle)).toBeVisible();
-  }
-
-  async validarBotaoExtenderBio() {
-    const botaoExtenderBio = "//button[contains(.,'Ver mais')]";
-    await expect(this.page.locator(botaoExtenderBio)).toBeVisible();
-    await this.page.click(botaoExtenderBio);
-  }
-
-  async validarBotaoReduzirBio() {
-    const botaoReduzirBio = "//button[contains(.,'Ver menos')]";
-    await expect(this.page.locator(botaoReduzirBio)).toBeVisible();
-    await this.page.click(botaoReduzirBio);
-  }
-
   async validarTituloEstilosPreferidos() {
-    const tituloEstilosPreferidos = "(//h1[contains(.,'Estilos preferidos')])[1]";
+    const tituloEstilosPreferidos =
+      "(//h1[contains(.,'Estilos preferidos')])[1]";
     await expect(this.page.locator(tituloEstilosPreferidos)).toBeVisible();
   }
 
   async validarEstilosDeJogoEscolhidos(estilos) {
-    estilos.forEach(async(estilo) => {
-      const localizador = "//span[@title='"+estilo+"']";
+    estilos.forEach(async (estilo) => {
+      const localizador = "//span[@title='" + estilo + "']";
       await expect(this.page.locator(localizador)).toBeVisible();
 
       await expect(this.page.locator(localizador)).toHaveText(estilo);
-    })
-  };
-       
+    });
+  }
+
   async validarTituloConquistas() {
-    const conquistas = "(//h1[contains(.,'Conquistas')])[1]";
-    await expect(this.page.locator(conquistas)).toBeVisible();
-  };
+    const conquistas = { role: 'heading', name: 'Conquistas' };
+    await expect(
+      this.page.getByRole(conquistas.role, { name: conquistas.name })
+    ).toBeVisible();
+  }
 
-  async validarConquistasAdquiridas() {
-    const ReiDasRolagens = "//p[contains(.,'Rei das rolagens')]";
-    const MestreRaiz = "//p[contains(.,'Mestre raiz')]";
+  async validarInsigniasRecebidas(conquistas) {
+    conquistas.forEach(async (insignia) => {
+      const localizador = "//p[contains(.,'" + insignia + "')]";
+      await expect(this.page.locator(localizador)).toBeVisible();
+      await expect(this.page.locator(localizador)).toHaveText(insignia);
+      console.log(insignia);
+    });
+  }
 
-    await expect(this.page.locator(ReiDasRolagens)).toBeVisible();
-    await expect(this.page.locator(MestreRaiz)).toBeVisible();
-  };
-}
+  async validarNome(nome) {
+    const nomeUsuario = { role: 'heading', name: nome };
+    await expect(
+      this.page.getByRole(nomeUsuario.role, { name: nomeUsuario.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(nomeUsuario.role, { name: nomeUsuario.name })
+    ).toHaveText(nome);
+  }
+
+  async validarPronome(pronome) {
+    const pronomeUsuario = { role: 'heading', name: `(${pronome})` };
+    await expect(
+      this.page.getByRole(pronomeUsuario.role, { name: pronomeUsuario.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(pronomeUsuario.role, { name: pronomeUsuario.name })
+    ).toHaveText(pronomeUsuario.name);
+  }
+
+  async validarUsername(username) {
+    const usernamePerfil = { role: 'heading', name: username };
+    await expect(
+      this.page.getByRole(usernamePerfil.role, { name: usernamePerfil.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(usernamePerfil.role, { name: usernamePerfil.name })
+    ).toHaveText(username);
+  }
+
+  async validarUserTitle(titulo) {
+    const userTitle = { role: 'heading', name: titulo };
+    await expect(
+      this.page.getByRole(userTitle.role, { name: userTitle.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(userTitle.role, { name: userTitle.name })
+    ).toHaveText(titulo);
+  }
+
+  async validarLocalResidencia(cidade, pais) {
+    const residencia = `${cidade} | ${pais}`;
+    const localResidencia = { role: 'heading', name: residencia };
+    await expect(
+      this.page.getByRole(localResidencia.role, { name: localResidencia.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(localResidencia.role, { name: localResidencia.name })
+    ).toHaveText(residencia);
+  }
+
+  async validarIdade(idade) {
+    const idadeUsuario = { role: 'heading', name: `${idade} anos` };
+    const idadeUser = `${idade} anos`;
+    await expect(
+      this.page.getByRole(idadeUsuario.role, { name: idadeUsuario.name })
+    ).toBeVisible();
+    await expect(
+      this.page.getByRole(idadeUsuario.role, { name: idadeUsuario.name })
+    ).toHaveText(idadeUser);
+  }
+};
