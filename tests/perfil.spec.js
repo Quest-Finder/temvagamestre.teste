@@ -25,7 +25,10 @@ test('Validar dados do usuário', async ({ page }) => {
 test('Validar Estilos de jogo e Conquistas', async ({ page }) => {
   const perfilPage = new PerfilPage(page);
   await perfilPage.goto();
-  await perfilPage.validarEstilosPreferidos(PERFIL.jogador.estilosPreferidos);
+  await perfilPage.validarEstilosDeJogoEscolhidos(
+    PERFIL.jogador.estilosPreferidos
+  );
+  await perfilPage.validateTitleEstilosPreferidos();
   await perfilPage.validateTitleConquistas();
   await perfilPage.validarInsigniasRecebidas(PERFIL.jogador.conquistas);
 });

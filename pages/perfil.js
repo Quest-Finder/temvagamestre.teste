@@ -10,6 +10,10 @@ exports.PerfilPage = class PerfilPage {
     await this.page.goto(PATH.perfil);
   }
 
+  async validateTitle() {
+    await expect(this.page).toHaveTitle(/Tem Vaga Mestre/);
+  }
+
   async clicarExtenderBio() {
     const extenderBioButton = { role: 'button', name: 'Ver mais' };
     await this.page
@@ -29,14 +33,16 @@ exports.PerfilPage = class PerfilPage {
     await expect(this.page.getByText(bio)).toHaveText(bio);
   }
 
-  async validateTitle() {
-    await expect(this.page).toHaveTitle(/Tem Vaga Mestre/);
-  }
-
   async validateTitleEstilosPreferidos() {
-    const tituloEstilosPreferidos =
-      "(//h1[contains(.,'Estilos preferidos')])[1]";
-    await expect(this.page.locator(tituloEstilosPreferidos)).toBeVisible();
+    const tituloEstilosPreferidos = {
+      role: 'heading',
+      name: 'Estilos preferidos',
+    };
+    await expect(
+      this.page.getByRole(tituloEstilosPreferidos.role, {
+        name: tituloEstilosPreferidos.name,
+      })
+    ).toBeVisible();
   }
 
   async validarEstilosDeJogoEscolhidos(estilos) {
