@@ -10,7 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/Quest-Finder/temvagamestre.teste.git"
   },
-  "keywords": [],
+  "keywords": [
+    "temvagamestre",
+    "playwright",
+    "javascript"
+  ],
   "authors": [
     {
       "name": "Bruno Machado"
