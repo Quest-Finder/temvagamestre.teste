@@ -23,7 +23,7 @@ export const CONQUISTAS = {
 export const PERFIL = {
   jogador: {
     nome: 'Lucas Marcelo',
-    pronome: 'Ele-Dele',
+    pronome: 'Ele - Dele',
     username: '@mestremarcelo',
     titulo: 'Mestre D&D com 15 anos de experiência',
     cidade: 'São Paulo',
