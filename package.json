@@ -1,8 +1,7 @@
 {
   "name": "temvagamestre.teste",
   "version": "1.0.0",
-  "description": "Este projeto será uma framework de automação de teste para o projeto 'Tem Vaga Mestre?' com o objetivo de validar testes de front-end e back-end",
-  "main": "index.js",
+  "description": "Framework de automação de testes para o projeto 'Tem Vaga Mestre?', com o objetivo de validar testes de front-end e back-end.",
   "scripts": {
     "test": "npx playwright test"
   },
@@ -11,34 +10,24 @@
     "url": "git+https://github.com/Quest-Finder/temvagamestre.teste.git"
   },
   "keywords": [
-    "temvagamestre",
-    "playwright",
-    "javascript"
+    "automação",
+    "teste",
+    "playwright"
   ],
-  "authors": [
-    {
-      "name": "Bruno Machado"
-    },
-    {
-      "name": "Jéssica Ferraz"
-    },
-    {
-      "name": "Raquel Gomes"
-    },
-    {
-      "name": "Renata Valois"
-    }
+  "contributors": [
+    "Bruno Machado",
+    "Jéssica Ferraz",
+    "Raquel Gomes",
+    "Renata Valois"
   ],
-  "license": "ISC",
+  "license": "none",
   "bugs": {
     "url": "https://github.com/Quest-Finder/temvagamestre.teste/issues"
   },
   "homepage": "https://github.com/Quest-Finder/temvagamestre.teste#readme",
   "devDependencies": {
     "@playwright/test": "^1.43.1",
-    "@types/node": "^20.12.7"
-  },
-  "dependencies": {
+    "@types/node": "^20.12.7",
     "dotenv": "^16.4.5"
   }
 }
