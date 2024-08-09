@@ -65,7 +65,6 @@ exports.PerfilPage = class PerfilPage {
       const localizador = "//p[contains(.,'" + insignia + "')]";
       await expect(this.page.locator(localizador)).toBeVisible();
       await expect(this.page.locator(localizador)).toHaveText(insignia);
-      console.log(insignia);
     });
   }
 
